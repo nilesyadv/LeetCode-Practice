@@ -11,20 +11,18 @@ public:
         {
             if(nums[mid]>target)
             {
-                end=mid-1;
-                mid=start+(end-start)/2;
+                end=mid-1;             
             }
             else if(nums[mid]<target)
             {
-                start=mid+1;
-                mid=start+(end-start)/2;
+                start=mid+1;               
             }
             else
             {
                 fo=mid;
-                end=mid-1;
-                mid=start+(end-start)/2;
+                end=mid-1;             
             }
+             mid=start+(end-start)/2;
         }
       
         end=nums.size()-1;
@@ -33,33 +31,22 @@ public:
         {
             if(nums[mid]>target)
             {
-                end=mid-1;
-                mid=start+(end-start)/2;
+                end=mid-1;                
             }
             else if(nums[mid]<target)
             {
-                start=mid+1;
-                mid=start+(end-start)/2;
+                start=mid+1;             
             }
             else
             {
                 lo=mid;
                 start=mid+1;
-                mid=start+(end-start)/2;
             }
+              mid=start+(end-start)/2;
         }
         
         v.push_back(fo);
-        v.push_back(lo);
-        //return v;
-    
-        
-//         if(fo<nums.size() && nums[fo]==target) v.push_back(fo);
-//         else v.push_back(-1);
-        
-//         if((lo-1)<nums.size() && nums[lo-1]==target) v.push_back(lo-1);
-//         else v.push_back(-1);
-        
+        v.push_back(lo);     
         return v;
     }
 };
