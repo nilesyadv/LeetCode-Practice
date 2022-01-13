@@ -8,17 +8,10 @@ public:
         int mid=s+(e-s)/2;
         while(s<e)
         {
-            if(nums[mid]>=nums[0])
-            {
-                s=mid+1;
-            }
-            else if(nums[mid]<nums[0])
-            {
-                e=mid;
-            }
+            if(nums[mid]>=nums[0]) s=mid+1;
+            else e=mid;
             mid=s+(e-s)/2;
         }
-        
-        return nums[mid];
+        return nums[s];
     }
 };
