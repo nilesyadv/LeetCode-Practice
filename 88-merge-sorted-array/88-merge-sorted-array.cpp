@@ -6,21 +6,13 @@ public:
         while(i<m && j<n)
         {
             if(nums1[i]<nums2[j])
-            {
-                v.push_back(nums1[i]);
-                i++;
-            }
+                v.push_back(nums1[i++]);
             else if(nums1[i]>nums2[j])
-            {
-                v.push_back(nums2[j]);
-                j++;
-            }
+                v.push_back(nums2[j++]);
             else
             {
-                v.push_back(nums1[i]);
-                i++;
-                v.push_back(nums2[j]);
-                j++;
+                v.push_back(nums1[i++]); 
+                v.push_back(nums2[j++]); 
             }
         }
         if(i==m && j==n)
