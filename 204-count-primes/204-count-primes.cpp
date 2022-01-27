@@ -10,7 +10,7 @@ public:
         a[2]=1;
         for(int i=2;i*i<=n;i++)
         {
-            for(int j=i;j*i<n;j++) a[j*i]=0;
+            if(a[i]) for(int j=i;j*i<n;j++) a[j*i]=0;
         }
         int cnt=0;
         for(int i=0;i<n;i++) if(a[i]==1) cnt++;
