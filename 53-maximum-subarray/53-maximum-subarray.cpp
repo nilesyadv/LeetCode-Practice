@@ -6,12 +6,8 @@ public:
         while(j<nums.size())
         {
             sum=sum+nums[j++];
-            if(sum<=0)
-            {
-                ans=max(ans,sum);
-                sum=0;
-            }
-            else ans=max(ans,sum);
+            ans=max(ans,sum);
+            if(sum<=0) sum=0;
         }
         return ans; 
     }
