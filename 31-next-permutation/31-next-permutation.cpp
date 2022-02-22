@@ -18,17 +18,11 @@ public:
             return;
         }
         
-        int mini=100,pos2=0;
+        int pos2=pos1;
         for(int i=pos1;i<nums.size();i++)
         {
-            if(nums[i]>nums[pos1])
-            {
-                if(nums[i]<mini)
-                {
+            if(nums[i]>nums[pos1])         
                     pos2=i;
-                    mini=nums[i];
-                }
-            }
         }
         
         swap(nums[pos1],nums[pos2]);
