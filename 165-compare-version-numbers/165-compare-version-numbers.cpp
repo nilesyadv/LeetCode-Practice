@@ -1,34 +1,23 @@
 class Solution {
 public:
     int compareVersion(string version1, string version2) {
-        int cnt1=0,cnt2=0;
-        for(int i=0;i<version1.size();i++) if(version1[i]=='.') cnt1++;
-        for(int i=0;i<version2.size();i++) if(version2[i]=='.') cnt2++;
-        int k=abs(cnt2-cnt1);
         
-        if(cnt1<cnt2) for(int i=0;i<k;i++) version1+=".0";
-        else for(int i=0;i<k;i++) version2+=".0";
-        
-        int i=0,j=0;
-        while(1)
+        int num1=0,num2=0,n1=version1.size(),n2=version2.size(),i=0,j=0;
+        while(i<n1 || j<n2)
         {
-            string s1;
-            while(i<version1.size() && version1[i]!='.')
-                s1+=version1[i++];
+            while(i<n1 && version1[i]!='.')
+                num1=num1*10+(int)(version1[i++]-'0');
+            
+            while(j<n2 && version2[j]!='.')
+                num2=num2*10+(int)(version2[j++]-'0');
+            
+            if(num1>num2) return 1;
+            else if(num1<num2) return -1;
+            
+            num1=0;
+            num2=0;
             i++;
-            
-            int num1=stoi(s1);
-            
-            string s2;
-            while(j<version2.size() && version2[j]!='.')
-                s2+=version2[j++];
             j++;
-            
-            int num2=stoi(s2);
-           
-            if(num1<num2) return -1;
-            else if(num1>num2) return 1;
-            if(i>=version1.size() && j>=version2.size()) break;
         }
         return 0;
     }
