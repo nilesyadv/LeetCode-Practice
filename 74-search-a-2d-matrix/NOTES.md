@@ -1,1 +1,1 @@
-​
+Don't treat it as a 2D matrix. Treat it as a sorted list.
