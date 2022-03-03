@@ -1,37 +1,18 @@
 class Solution {
+    int dp[5000];
 public:
     int numberOfArithmeticSlices(vector<int>& nums) {
-        int ans=0;
         int n=nums.size();
-        int i=0,j=1;
-        if(n==1) return 0;
-        int d=nums[j]-nums[i];
-        while(j<n)
+        if(n<3) return 0;
+        int ans=0;
+        for(int i=2;i<n;i++)
         {
-            if(nums[j]-nums[j-1]==d)
+            if(nums[i]-nums[i-1]==nums[i-1]-nums[i-2])
             {
-                j++;
-                continue;
+                dp[i]=1+dp[i-1];
+                ans+=dp[i];
             }
-            
-            int total=j-i;
-            if(total>=3)
-            {
-                int k=total-3+1;
-                ans=ans+(k*(k+1))/2;
-            }
-            d=nums[j]-nums[j-1];
-            i=j-1;
         }
-        
-        int total=j-i;
-        if(total>=3)
-        {
-            int k=total-3+1;
-            ans=ans+(k*(k+1))/2;
-        }
-        
-        return ans;
-        
+        return ans;   
     }
 };
