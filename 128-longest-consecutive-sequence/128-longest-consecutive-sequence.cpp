@@ -8,11 +8,11 @@ public:
         
         for(int i=0;i<nums.size();i++)
         {
-            if(s.find(nums[i]-1)==s.end())
+            if(s.count(nums[i]-1)==0)
             {
                 int y=nums[i];
                 int cnt=0;
-                while(s.find(y)!=s.end())
+                while(s.count(y))
                 {
                     cnt++;
                     y=y+1;
