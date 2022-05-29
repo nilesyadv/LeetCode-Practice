@@ -3,13 +3,13 @@ class Solution {
 public:
     int maxProduct(vector<string>& words) {
         int n=words.size();
-        vector<vector<int>> v( n , vector<int> (26, 0));
+        vector<vector<bool>> v( n , vector<bool> (26, false));
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<words[i].size();j++)
             {
                 int c=(int)(words[i][j]-'a');
-                v[i][c]=1;
+                v[i][c]=true;
             }
         }
         
@@ -21,7 +21,7 @@ public:
                 bool flag=true;
                 for(int k=0;k<26;k++)
                 {
-                    if(v[i][k]==1 && v[j][k]==1)
+                    if(v[i][k]&& v[j][k])
                     {
                         flag=false;
                         break;
