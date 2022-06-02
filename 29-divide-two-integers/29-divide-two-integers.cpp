@@ -7,9 +7,9 @@ public:
         if((n>=0 && m<0) || (n<0 && m>=0)) sign=-1;
         n=abs(n);
         m=abs(m);
+        
         if(m>n) return 0;
         if(m==n) return 1*sign;
-        //cout<<n<<" "<<m<<endl;
         
         for(long long i=32;i>=0;i--)
         {
@@ -17,11 +17,8 @@ public:
             {
                 temp+=(m<<i);
                 q|=(1LL<<i);
-                //cout<<i<<" "<<temp<<" "<<q<<endl;
             }
         }
-        
-        //cout<<q<<endl;
         
         if(sign==-1) q=q*-1;
         if(q>INT_MAX) return INT_MAX;
