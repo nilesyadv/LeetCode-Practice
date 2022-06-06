@@ -16,31 +16,20 @@ public:
         if(A==NULL) return B;
         if(B==NULL) return A;
         
-        ListNode* ans,*curr;
-        if(A->val<=B->val)
-        {
-            ans=A;
-            A=A->next;
-            curr=ans;
-        }
-        else
-        {
-            ans=B;
-            B=B->next;
-            curr=ans;
-        }
+        ListNode* ans=new ListNode(-1);
+        ListNode* curr=ans;
         
         while(true)
         {
             if(A==NULL)
             {
                 curr->next=B;
-                return ans;
+                return ans->next;
             }
             if(B==NULL)
             {
                 curr->next=A;
-                return ans;
+                return ans->next;
             }
             
             if(A->val<=B->val)
@@ -55,8 +44,6 @@ public:
                 curr=curr->next;
                 B=B->next;
             }
-        }
-        
-        
+        }              
     }
 };
