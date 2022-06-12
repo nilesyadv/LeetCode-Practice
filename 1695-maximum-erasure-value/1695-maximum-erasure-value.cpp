@@ -3,22 +3,21 @@ public:
     int maximumUniqueSubarray(vector<int>& nums) {
         int n=nums.size();
         int i=0,j=0,sum=0,ans=0;
-        //unordered_map<int,int> m;
-        int m[100000]; for(int i=0;i<100000;i++) m[i]=0;
+        unordered_set<int> s;
         while(j<n)
         {
-            if(m[nums[j]]==0)
+            if(s.find(nums[j])==s.end())
             {
                 sum+=nums[j];
                 ans=max(ans,sum);
-                m[nums[j]]++;
+                s.insert(nums[j]);
                 j++;
             }
             else
             {
-                while(m[nums[j]]!=0)
+                while(s.find(nums[j])!=s.end())
                 {
-                    m[nums[i]]--;
+                    s.erase(nums[i]);
                     sum-=nums[i];
                     i++;
                 }
