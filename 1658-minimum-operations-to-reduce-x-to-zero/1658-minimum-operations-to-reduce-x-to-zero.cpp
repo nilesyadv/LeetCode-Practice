@@ -7,7 +7,7 @@ public:
         for(int i=0;i<n;++i) sum+=nums[i];
         int target=sum-x,i=0,curr_sum=0,maxlength=0;
         bool found=false;
-        for(int j=0;j<n;j++)
+        for(int j=0;j<n;++j)
         {
             curr_sum+=nums[j];
             while(curr_sum>target && i<=j) 
