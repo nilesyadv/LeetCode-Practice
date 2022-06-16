@@ -1,15 +1,11 @@
 class Solution {
     int longest(string &s,int left,int right,int n)
     {
-        if(left<0 || right>=n) return 1;
         while(left>=0 && right<n && s[left]==s[right])
         {
             left--;
             right++;
         }
-        // left=max(left,0);
-        // right=min(right,n-1);
-        // return right-left+1
         right--;
         left++;
         return right-left+1;
@@ -20,6 +16,7 @@ public:
         if(s.size()<=1) return s;
         int n=s.size();
         int start=0,end=0;
+       
         for(int i=0;i<n;i++)
         {
             int len1=longest(s,i,i,n);
@@ -33,7 +30,6 @@ public:
         }
         
         return s.substr(start,end-start+1);
-        //return s;
         
     }
 };
