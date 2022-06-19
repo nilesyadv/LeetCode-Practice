@@ -15,25 +15,15 @@ class WordFilter {
                 {
                     string s=words[i].substr(k);
                     string t=p+'|'+s;
-                  //  cout<<t<<" ";
                     map[t]=i+1;
                 }
             }
-            
-          //  cout<<endl;
         }
     }
 
     int f(string prefix, string suffix) {
         string t=prefix+'|'+suffix;
-        // cout<<endl;
-        // cout<<t<<endl;
-        //cout<<map[t]<<endl;
         if(map[t]==0) return -1;
         else return map[t]-1;
     }
 };
-
-// // ["WordFilter","f","f","f","f","f","f","f","f","f","f"]
-// // [[["cabaabaaaa","ccbcababac","bacaabccba","bcbbcbacaa","abcaccbcaa","accabaccaa","cabcbbbcca","ababccabcb","caccbbcbab","bccbacbcba"]]
-// ,["bccbacbcba","a"],["ab","abcaccbcaa"],["a","aa"],["cabaaba","abaaaa"],["cacc","accbbcbab"],["ccbcab","bac"],["bac","cba"],["ac","accabaccaa"],["bcbb","aa"],["ccbca","cbcababac"]]
