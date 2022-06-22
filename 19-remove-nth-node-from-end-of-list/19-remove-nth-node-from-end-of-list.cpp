@@ -20,7 +20,6 @@ public:
         }
         
         if(sz==n) return head->next;
-        cout<<sz<<endl;
         int p=sz-n;
         int count=1;
         s=head;
