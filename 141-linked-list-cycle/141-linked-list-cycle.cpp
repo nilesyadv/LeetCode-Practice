@@ -10,14 +10,14 @@ class Solution {
 public:
     bool hasCycle(ListNode *head) {
         int maxi=100000,cnt=0;
-        ListNode* temp=head;
-        while(temp!=NULL)
+        ListNode *s=head,*f=head;
+        while(s!=NULL && f!=NULL)
         {
-            cnt++;
-            temp=temp->next;
-            if(cnt>=maxi) return true;
+            if(s!=NULL) s=s->next;
+            if(f!=NULL) f=f->next;
+            if(f!=NULL) f=f->next;
+            if(s==f && s!=NULL && f!=NULL) return true;
         }
-        
         return false;
     }
 };
