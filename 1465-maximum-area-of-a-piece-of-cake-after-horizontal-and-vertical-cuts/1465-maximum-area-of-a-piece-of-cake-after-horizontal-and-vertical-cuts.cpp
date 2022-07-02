@@ -9,9 +9,10 @@ public:
         
         if(horizontalCuts.back()!=h) horizontalCuts.push_back(h);
         if(verticalCuts.back()!=w) verticalCuts.push_back(w);
+        int row=horizontalCuts.size(),col=verticalCuts.size();
         
-        for(int i=1;i<horizontalCuts.size();i++) maxRowDiff=max(maxRowDiff,horizontalCuts[i]-horizontalCuts[i-1]);
-        for(int i=1;i<verticalCuts.size();i++) maxColDiff=max(maxColDiff,verticalCuts[i]-verticalCuts[i-1]);
+        for(int i=1;i<row;i++) maxRowDiff=max(maxRowDiff,horizontalCuts[i]-horizontalCuts[i-1]);
+        for(int i=1;i<col;i++) maxColDiff=max(maxColDiff,verticalCuts[i]-verticalCuts[i-1]);
         
         long long MOD=1e9+7;
         long long ans=((maxRowDiff%MOD)*(maxColDiff%MOD))%MOD;
