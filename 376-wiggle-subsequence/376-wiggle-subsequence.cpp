@@ -4,38 +4,43 @@ public:
     int wiggleMaxLength(vector<int> &nums)
     {
         int n = nums.size();
-        vector<vector<int>> v(n, vector<int>(2, -1));
-        v[0][0] = 1;
-
-        for (int i = 0; i < n; i++)
+        int cnt1=1,cnt2=1;
+        for(int i=1;i<n;i++)
         {
-            for (int j = 0; j < i; j++)
+            if(cnt1%2)
             {
-                if (v[j][1] == -1)
+                if(nums[i]>nums[i-1])
                 {
-                    if (nums[i] != nums[j])
-                    {
-                        if (v[i][0] < 1 + v[j][0])
-                        {
-                            v[i][0] = v[j][0] + 1;
-                            v[i][1] = j;
-                        }
-                    }
+                    cnt1++;
                 }
-                else if ((nums[j] > nums[v[j][1]] && nums[j] > nums[i]) || (nums[j] < nums[v[j][1]] && nums[j] < nums[i]))
+            }
+            else
+            {
+                if(nums[i]<nums[i-1])
                 {
-                    if (v[i][0] < 1 + v[j][0])
-                    {
-                        v[i][0] = v[j][0] + 1;
-                        v[i][1] = j;
-                    }
+                    cnt1++;
                 }
             }
         }
         
-        int ans = 1;
-        for (int i = 0; i < n; i++)
-            ans = max(v[i][0], ans);
-        return ans;
+        for(int i=1;i<n;i++)
+        {
+            if(cnt2%2)
+            {
+                if(nums[i]<nums[i-1])
+                {
+                    cnt2++;
+                }
+            }
+            else
+            {
+                if(nums[i]>nums[i-1])
+                {
+                    cnt2++;
+                }
+            }
+        }
+        
+        return max(cnt1,cnt2);
     }
 };
