@@ -5,16 +5,14 @@ public:
         priority_queue<pair<int,int>> p;
         int n=nums.size();
         
-        int dp[n]; dp[0]=nums[0];
-        p.push({dp[0],0});
-        
+        p.push({nums[0],0});
+
         for(int i=1;i<n;i++)
         {
             while(p.top().second<i-k) p.pop();
-            dp[i]=nums[i]+p.top().first; 
-            p.push({dp[i],i});
+            if(i==n-1) return nums[i]+p.top().first;
+            p.push({nums[i]+p.top().first,i});
         }
-        
-        return dp[n-1];
+        return p.top().first;
     }
 };
