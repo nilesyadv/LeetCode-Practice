@@ -7,6 +7,12 @@ class Solution {
         {
             if(sideLength[i] + matchsticks[index] > lengthPerSide) continue;
             
+            int j = i;
+            while (--j >= 0)
+                if (sideLength[i] == sideLength[j]) 
+                    break;
+            if (j != -1) continue;
+            
             sideLength[i] += matchsticks[index];
             if(backtrack(sideLength, index+1, lengthPerSide, matchsticks)) return true;
             sideLength[i] -= matchsticks[index];
