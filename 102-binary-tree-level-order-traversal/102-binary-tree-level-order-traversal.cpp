@@ -20,17 +20,18 @@ public:
         
         while(!q.empty())
         {
-            int size=q.size();
-            vector<int> level;
-            for(int i=1;i<=size;i++)
+            int n=q.size();
+            vector<int> v;
+            for(int i=0;i<n;i++)
             {
                 if(q.front()->left) q.push(q.front()->left);
                 if(q.front()->right) q.push(q.front()->right);
-                level.push_back(q.front()->val);
+                v.push_back(q.front()->val);
                 q.pop();
             }
-            ans.push_back(level);  
+            ans.push_back(v);
         }
+        
         return ans;
     }
 };
