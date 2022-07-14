@@ -15,11 +15,12 @@ class Solution {
     {
         if(index==inorder.size()) return NULL;
         TreeNode* root = new TreeNode(preorder[index]);
+        int indexRoot = m[preorder[index]];
         
-        if(m[preorder[index]]-1 >= left) root->left = BuildingTree(index + 1, preorder, inorder, left, m[preorder[index]] - 1);
+        if(indexRoot-1 >= left) root->left = BuildingTree(index + 1, preorder, inorder, left, indexRoot - 1);
         else root->left = NULL;
         
-        if(m[preorder[index]]+1 <= right) root->right = BuildingTree(index + m[preorder[index]] - left + 1, preorder, inorder, m[preorder[index]] +1, right);
+        if(m[preorder[index]]+1 <= right) root->right = BuildingTree(index + indexRoot - left + 1, preorder, inorder, indexRoot +1, right);
         else root->right = NULL;
         
         return root;
@@ -30,12 +31,6 @@ public:
         
         int n = inorder.size();
         for (int i = 0; i < n; i++) m[inorder[i]] = i;
-        
-        //TreeNode* root=new TreeNode(preorder[0]);
-        // root->left = BuildingTree(root, 1, preorder, inorder, 0, m[inorder[root->val]]-1);
-        // root->right = BuildingTree(root, 1, preorder, inorder, 0, m[inorder[root->val]]-1);
-        // root->val=20;
-        // cout<<root->val<<endl;
         return BuildingTree(0, preorder, inorder, 0, n-1);
     }
 };
