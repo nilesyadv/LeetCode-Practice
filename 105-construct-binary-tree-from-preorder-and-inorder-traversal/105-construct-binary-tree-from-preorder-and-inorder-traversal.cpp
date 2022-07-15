@@ -13,14 +13,13 @@ class Solution {
     map<int,int> m;
     TreeNode* BuildingTree(int index, vector<int>& preorder, vector<int>& inorder, int left, int right)
     {
-        if(index==inorder.size()) return NULL;
         TreeNode* root = new TreeNode(preorder[index]);
         int indexRoot = m[preorder[index]];
         
         if(indexRoot-1 >= left) root->left = BuildingTree(index + 1, preorder, inorder, left, indexRoot - 1);
         else root->left = NULL;
         
-        if(m[preorder[index]]+1 <= right) root->right = BuildingTree(index + indexRoot - left + 1, preorder, inorder, indexRoot +1, right);
+        if(indexRoot+1 <= right) root->right = BuildingTree(index + indexRoot - left + 1, preorder, inorder, indexRoot +1, right);
         else root->right = NULL;
         
         return root;
