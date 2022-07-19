@@ -2,10 +2,11 @@ class Solution {
     int dp[101][101][201];
     bool Interleave(string &s1, string &s2, string &s3, int i, int j, int k)
     {
-        //cout<<i<<" "<<j<<" "<<k<<endl;
-        //return true;
+        
         if(i==s1.size() && j==s2.size() && k==s3.size()) return dp[i][j][k]=1;
+        
         if(dp[i][j][k]!=-1) return dp[i][j][k];
+        
         if(i==s1.size())
         {
             if(s3[k]==s2[j]) return dp[i][j][k]=Interleave(s1,s2,s3,i,j+1,k+1);
