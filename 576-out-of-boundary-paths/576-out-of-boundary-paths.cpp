@@ -12,24 +12,21 @@ class Solution {
     
     int TotalNoOfPaths(int m, int n, int maxMove, int startRow, int startColumn)
     {
-
+        if(startRow == -1 || startRow == m || startColumn == -1 || startColumn == n) return 1;
+        
         if(maxMove == 0) return dp[startRow][startColumn][maxMove] = 0;
         
         if(dp[startRow][startColumn][maxMove] != -1) return dp[startRow][startColumn][maxMove];
         
         int ans = 0;
         
-        if(startRow + 1 == m) ans = sum(ans, 1, M);
-        else ans = sum(ans, TotalNoOfPaths(m, n, maxMove - 1, startRow + 1, startColumn), M);
+        ans = sum(ans, TotalNoOfPaths(m, n, maxMove - 1, startRow + 1, startColumn), M);
         
-        if(startRow - 1 == -1) ans += 1;
-        else ans = sum(ans, TotalNoOfPaths(m, n, maxMove - 1, startRow - 1, startColumn), M);
+        ans = sum(ans, TotalNoOfPaths(m, n, maxMove - 1, startRow - 1, startColumn), M);
         
-        if(startColumn + 1 == n) ans += 1;
-        else ans = sum(ans, TotalNoOfPaths(m, n, maxMove - 1, startRow, startColumn + 1), M);
+        ans = sum(ans, TotalNoOfPaths(m, n, maxMove - 1, startRow, startColumn + 1), M);
         
-        if(startColumn - 1 == -1) ans += 1;
-        else ans = sum(ans, TotalNoOfPaths(m, n, maxMove - 1, startRow, startColumn - 1), M);
+        ans = sum(ans, TotalNoOfPaths(m, n, maxMove - 1, startRow, startColumn - 1), M);
         
         return dp[startRow][startColumn][maxMove] = ans;
     }
