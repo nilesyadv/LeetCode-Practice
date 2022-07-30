@@ -11,8 +11,8 @@ public:
             vector<int> hashTemp(26, 0);
             for(int j = 0; j < s.size(); j++)
             {
-                hashTemp[(int)(s[j]-'a')]++;
-                hash[(int)(s[j]-'a')] = max(hashTemp[(int)(s[j]-'a')], hash[(int)(s[j]-'a')]);
+                hashTemp[s[j]-'a']++;
+                hash[s[j]-'a'] = max(hashTemp[s[j]-'a'], hash[s[j]-'a']);
             }
         }
         
@@ -23,7 +23,7 @@ public:
             bool flag = true;
             
             for(int j = 0; j < s.size(); j++)
-                hashTemp[(int)(s[j]-'a')]++;
+                hashTemp[s[j]-'a']++;
            
             for(int j = 0; j < 26; j++)
                 if(hashTemp[j] < hash[j]) {flag = false; break;}    
