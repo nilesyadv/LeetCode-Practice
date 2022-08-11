@@ -19,7 +19,7 @@ class Solution {
 public:
     bool isValidBST(TreeNode* root) {
         
-        long long left = -2147483648LL, right = 2147483647LL;
+        int left = INT_MIN, right = INT_MAX;
         return CheckIfValid(root -> left, left, root -> val - 1LL) && CheckIfValid(root -> right, root -> val + 1LL, right);
     }
 };
