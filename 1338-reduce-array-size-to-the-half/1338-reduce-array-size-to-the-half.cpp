@@ -1,9 +1,11 @@
 class Solution {
 public:
     int minSetSize(vector<int>& arr) {
-        vector<int> v(100009,0);
+        unordered_map<int, int> map;
         for(int i = 0; i < arr.size(); i++)
-            v[arr[i]]++;
+            map[arr[i]]++;
+        vector<int> v;
+        for(auto x: map) v.push_back(x.second);
         
         sort(v.rbegin(),v.rend());
         int ans = 0, total = 0;
