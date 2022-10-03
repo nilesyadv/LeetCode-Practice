@@ -5,7 +5,7 @@ class Solution {
         if(target < 0 || n < 0) return 0;
         if(dp[n][target] != -1) return dp[n][target];
         for(int i = 1; i <= k; i++){
-            totalWays = ((totalWays % 1000000007) + (helper(n - 1, k, target - i, dp) % 1000000007)) % 1000000007;
+            if(i <= target) totalWays = ((totalWays % 1000000007) + (helper(n - 1, k, target - i, dp) % 1000000007)) % 1000000007;
         }
         return dp[n][target] = totalWays;
     }
