@@ -1,17 +1,19 @@
-class Solution { 
-public:
-    int memo[100] = {};
-    int numDecodings(const string& s) {
-        return dp(s, 0);
+class Solution {
+    int helper(int i, vector<int> &dp, string &s){
+        if(i == s.size()) return 1;
+        if(s[i] == '0') return 0;
+        if(dp[i] != -1) return dp[i];
+        int totalWays = 0;
+        totalWays += helper(i + 1, dp, s);
+        if(i + 1 < s.size()){
+            int c = ((s[i] - '0') * 10 + (s[i+1] - '0'));
+            if(c <= 26) totalWays += helper(i + 2, dp, s);
+        }
+        return dp[i] = totalWays;
     }
-    int dp(const string& s, int i) {
-        if (i == s.size()) return 1;
-        if (memo[i] != 0) return memo[i];
-        int ans = 0;
-        if (s[i] != '0') 
-            ans += dp(s, i+1);
-        if (i+1 < s.size() && (s[i] == '1' || s[i] == '2' && s[i+1] <= '6')) 
-            ans += dp(s, i+2);
-        return memo[i] = ans;
+public:
+    int numDecodings(string s) {
+        vector<int> dp(s.size(), -1);
+        return helper(0, dp, s);
     }
 };
