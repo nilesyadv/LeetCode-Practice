@@ -1,28 +1,16 @@
 class MyCalendar {
 public:
-    vector<pair<int,int>> v;
+    set<pair<int,int>> set;
     MyCalendar() {
         
     }
     
     bool book(int start, int end) {
-        int low = start, high = end - 1;
-        bool flag = true;
-        for(int i = 0; i < v.size(); i++)
-        {
-            if(!(low > v[i].second || high < v[i].first))
-            {
-                flag = false;
-                break;
-            }
-        }
-        if(flag)
-        {
-            v.push_back({low, high});
-            return flag;
-        }
-        
-        return flag;
+        pair<int, int> p = {start, end};
+        auto it = upper_bound(set.begin(), set.end(), p);
+        if(it != set.end() && it->second < end) return false;
+        set.insert({end, start});
+        return true;
     }
 };
 
