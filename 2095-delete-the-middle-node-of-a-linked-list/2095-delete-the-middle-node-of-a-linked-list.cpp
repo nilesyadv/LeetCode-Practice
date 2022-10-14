@@ -16,7 +16,9 @@ public:
         while(true)
         {
             if(fast -> next == NULL || fast -> next -> next == NULL){
+                ListNode* temp = slow -> next;
                 slow -> next = slow -> next -> next;
+                delete temp;
                 break;
             }
             slow = slow -> next;
