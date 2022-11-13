@@ -1,7 +1,6 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        vector<string> v;
         string ans;
         for(int i = s.size() - 1; i >= 0; )
         {
@@ -15,15 +14,10 @@ public:
                 p += s[t];
                 t++;
             }
-            v.push_back(p);
-            //cout<<p<<"-"<<p.size()<<" ";
             if(p.size())ans = ans + p + ' ';
             i = j;
         }
          ans.pop_back();
-        // ans.pop_back();
-         //cout<<endl;
-        // cout<<ans<<endl;
-        return ans;
+         return ans;
     }
 };
