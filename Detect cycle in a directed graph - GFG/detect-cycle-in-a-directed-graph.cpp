@@ -13,27 +13,15 @@ class Solution {
 	    for(int i = 0; i < V; i++)
 	    {
 	        for(int j = 0; j < adj[i].size(); j++)
-	        {
 	            indegree[adj[i][j]]++;
-	        }
 	    }
 	    
 	    for(int i = 0; i < V; i++)
-	    {
-	        //cout<<indegree[i]<<" ";
 	        if(indegree[i] == 0) q.push(i);
-	    }
-	    //cout<<endl;
+	    
 	    vector<int> ans;
 	    while(q.size())
 	    {
-	        queue<int> q1 = q;
-	        while(q1.size())
-	        {
-	            //cout<<q1.front()<<" ";
-	            q1.pop();
-	        }
-	        //cout<<endl;
 	        int i = q.front();
 	        q.pop();
 	        for(int j = 0; j < adj[i].size(); j++)
@@ -43,8 +31,6 @@ class Solution {
 	        }
 	        ans.push_back(i);
 	    }
-	   // cout<<ans.size()<<" "<<V<<endl;
-	   // cout<<"*******"<<endl;
 	    
 	    return !(ans.size() == V);
 	    
