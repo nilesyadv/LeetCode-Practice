@@ -7,16 +7,12 @@ class Solution
 {
     void dfs(int i, vector<int> adj[], vector<int> &vis, stack<int> &st)
     {
-        // cout<<i<<endl;
-        // if(i >= V) cout<<"shit";
         if(vis[i] == 0) vis[i] = 1;
         else return;
+        
         for(int j = 0; j < adj[i].size(); j++)
-        {
-            //cout<<adj[i][j]<<" ";
-            if(vis[adj[i][j]] == 0) dfs(adj[i][j], adj, vis, st);
-        }
-        //cout<<endl;
+            dfs(adj[i][j], adj, vis, st);
+        
         st.push(i);
         return;
     }
@@ -25,25 +21,16 @@ class Solution
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
-	    for(int i = 0; i < V; i++)
-	    {
-	        //cout<<i<<"-->";
-	        for(int j = 0; j < adj[i].size(); j++)
-	        {
-	            //cout<<adj[i][j]<<" ";
-	        }
-	        //cout<<endl;
-	    }
 	    
 	    vector<int> vis(V, 0);
 	    stack<int> st;
+	    
 	    for(int i = 0; i < V; i++)
 	    {
 	        if(vis[i]==0)
-	        {
 	            dfs(i, adj, vis, st);
-	        }
 	    }
+	    
 	    vector<int> ans;
 	    while(st.size())
 	    {
